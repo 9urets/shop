@@ -1,0 +1,130 @@
+$this - указатель на объект класса (указатель на самого себя);
+ООП - позднее статическое связывание?:
+
+PDO
+$st = $conn-> prepare("INSERT INTO `log_in` (login,password) VALUES (:login, :password)");
+$login = $_POST['login'];
+$st->bindParam(":login", $login);
+$st->execute();
+
+MVC (model view conntroller)
+controller - бизнес логика
+view - верстка
+model - работа с данными
+
+Framework
+Yii2
+Laravel
+Symfony4
+Codeigniter - сейчас пользуемся
+
+host.ru/welcome/index
+welcome - класс к которому обращаемя 
+index - метод
+
+codeigniter index php remove
+выполнить инстукцию
+
+
+host.ru/welcome/index
+адрес/контроллер/метод
+
+class Welcome extends CI_Controller{
+public function index{
+$data=[];
+$data[]="title";
+$this->load->view('header', $data); - header = header.php (это файл)
+}
+}
+
+
+ДЗ - посмотреть codeigniter 
+доучить то что хреново знаю
+---------------------------------------------------------------------
+
+Active Record - технология работы с базой данных (построение запросов);
+Query Builder
+------------------------------------------------------------------
+
+База данных
+Функции агрегирования(agregate)  MAX(), MIN(), SUM(), AVG()
+SELECT COUNT(*) as avg_user FROM `users`
+COUNT(name) - возвращает число (name)
+DISTINCT - возвращает уникальные значения
+
+GIT
+
+
+ДЗ
+Сервис для загрузки файлов
+залить файл может только залогенынный пользователь, оставить коментарий, (чтобы скачать файл нужно ввести пароль).
+Скачать файл может любой, в личном кабинете может поменять пароль (ограничение размера файла до 100 МБ).
+Сколько каждый пользователь загрузил файлов, создать колонку где будет хранится максимальный размер файла который был загружен пользователей.
+(Rghost)
+
+
+Git - некий софт который следит за изменением данных, следит за комитами.
+комиты - система контроля данных, следит за изменением данных, если строка была измененна она будет под знаком (+), 
+а строка до измененния под знаком (-).
+
+Console  (GIT)
+путь - (C:\Users\shams\test\git clone https....)
+clone
+cd - указать путь перехода
+dir
+add - добавить
+(commit -m "комментарий") - нельзя создавать с пустым комментарием
+push - добавить измененния на сервер
+checkout a9a9f27 - вернуться на предыдущий коммит (a9a9f27 - номер коммита по которому нужно перейти)
+(checkout -)   - вернуться на последний коммит
+pull - подгрузить все измененния
+
+C:\Users\shams
+
+
+Индексы - ускаривают выборки (где используются where), индексы перестраиваются 
+класторизованные, не класторизованные
+одиночные, групповые, состовные
+767 байт размер индексов в MySQL
+выбарка по куче
+недостаток - при добавление приходится перестраивать индексы
+листья - размер около 10 кбайт....
+
+select id_user, COUNT(*), FROM `task` GROUP BY `id_user`
+WHERE - работает с кучей.
+HAVING id>3 (HAVING тоже самое что - WHERE, только WHERE будет выполняться первым, потом происходит группировка,
+ после будет происходить HAVING )
+HAVING - работает с группами
+
+Реляционная БД
+select task.id_task, task.task, users.name
+from `tasks` 
+JOIN `users`  ON users.id_user = tasks.id_user
+WHERE tasks.id_task = 2
+
+(select task.id_task, t.task, u.name
+from `tasks` AS t
+JOIN `users` AS u ON u.id_user = ts.id_user
+WHERE t.id_task = 2)
+
+ON - перемножение
+users.id_user = tasks.id_user (users-таблица, id_users - название калонки, = - прибавить)
+
+select t . *, u.login AS myLogin
+FROM`tasks` AS t
+JOIN `users` AS u ON u.id_user = t.id_user
+
+INNER JOIN = JOIN
+во FROM`tasks (LEFT JOIN)
+JOIN `users` (RIGHT JOIN)
+результат объединения это INNER JOIN
+
+Виды связей:
+Многие к многим
+Один к Многим
+Один к одному
+
+Репликации и backup ?
+View в БД
+транзакции
+триггерры
